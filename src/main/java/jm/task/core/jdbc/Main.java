@@ -3,7 +3,6 @@ package jm.task.core.jdbc;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +23,9 @@ public class Main {
         userService.saveUser(user2.getName(), user2.getLastName(), user2.getAge());
         userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge());
         userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
-        List list = new ArrayList(userService.getAllUsers());
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).toString());
+        List<User> list = new ArrayList<>(userService.getAllUsers());
+        for (User user : list) {
+            System.out.println(user.toString());
         }
         userService.cleanUsersTable();
         userService.dropUsersTable();
