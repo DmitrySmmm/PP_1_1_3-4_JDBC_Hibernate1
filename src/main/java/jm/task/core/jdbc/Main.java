@@ -24,9 +24,7 @@ public class Main {
         userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge());
         userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
         List<User> list = new ArrayList<>(userService.getAllUsers());
-        for (User user : list) {
-            System.out.println(user.toString());
-        }
+        list.forEach(System.out::println);
         userService.cleanUsersTable();
         userService.dropUsersTable();
         userService.dbClose();

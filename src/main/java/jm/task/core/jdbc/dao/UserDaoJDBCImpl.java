@@ -39,7 +39,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
-            statement.execute("DROP TABLE users");
+            statement.execute("DROP TABLE IF EXISTS users");
             connection.commit();
         } catch (SQLException e) {
             try {
@@ -80,7 +80,7 @@ public class UserDaoJDBCImpl implements UserDao {
             try {
                 connection.rollback();
             } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+                System.err.println("User not found");
             }
         }
     }
